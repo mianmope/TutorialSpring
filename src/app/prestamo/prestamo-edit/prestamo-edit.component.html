@@ -1,0 +1,49 @@
+<div class="container">
+    <h1>Crear Prestamo</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="number" matInput placeholder="Identificador" [(ngModel)]="prestamo.id" name="id" disabled>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label >Nombre Cliente</mat-label>
+            <mat-select disableRipple [(ngModel)]="prestamo.cliente" name="cliente" required >
+                <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{cliente.name}}</mat-option>
+            </mat-select>
+            <mat-error>El cliente no puede estar vacio </mat-error>
+            
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label >Nombre del Juego</mat-label>
+            <mat-select disableRipple [(ngModel)]="prestamo.game" name="title" required >
+                <mat-option *ngFor="let game of games" [value]="game" >{{game.title}}</mat-option>
+            </mat-select>
+            <mat-error>El juego no puede estar vacio </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Fecha de prestamo</mat-label>
+            <input type="date" matInput [(ngModel)]="prestamo.dateIni" name="dateIni" required>
+            <mat-error>La Fecha inicio incorrecta</mat-error>
+
+            <input type="date" matInput [(ngModel)]="prestamo.dateFin" name="dateFin" required>
+            <mat-error>La Fecha fin incorrecta</mat-error>
+
+        </mat-form-field>
+        
+
+
+
+        
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>
+
+
